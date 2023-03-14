@@ -11,8 +11,8 @@ all: finale
 	$(CC) -c $(@:.o=.c) -o $@ -ffreestanding -fno-exceptions -m32
 
 $(TARGET): $(OBJS)
-	$(shell nasm -f elf start.asm -o start.o)
-	$(CC) -m32 -nostdlib -nodefaultlibs start.o $? -T linker.ld -o $(TARGET)
+	$(shell nasm -f elf boot.asm -o boot.o)
+	$(CC) -m32 -nostdlib -lgcc -nodefaultlibs boot.o $? -T linker.ld -o $(TARGET)
 
 finale:
 	$(shell cd ~/projects/os/)
