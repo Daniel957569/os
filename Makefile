@@ -12,7 +12,7 @@ all: finale
 
 $(TARGET): $(OBJS)
 	$(shell nasm -f elf boot.asm -o boot.o)
-	$(CC) -m32 -nostdlib -lgcc -nodefaultlibs boot.o $? -T linker.ld -o $(TARGET)
+	$(CC) -m32 -nostdlib -nodefaultlibs -lgcc boot.o $? -T linker.ld -o $(TARGET)
 
 finale:
 	$(shell cd ~/projects/os/)
@@ -20,5 +20,5 @@ finale:
 	$(shell grub2-mkrescue iso —output=$(TARGET).iso)
 
 clean:
-	rm -f *.o $(TARGET) $(TARGET).iso
+	rm -f *.o $(TARGET)
 	find . -name \*.o | xargs —no-run-if-empty rm
