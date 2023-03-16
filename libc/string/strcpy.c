@@ -1,7 +1,8 @@
-#include “../include/string.h”
+#include "../include/string.h"
 
-char* strcpy(char* dest, const char* src) {
-	char* tmp = dest;
-	while ((*dest++ = *src++) != 0) ;
-	return tmp;
+char *strcpy(char *dest, const char *src) {
+  char *tmp = dest;
+  while ((*dest++ = *src++) != 0)
+    ;
+  return tmp;
 }
